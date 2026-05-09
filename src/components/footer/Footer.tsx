@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
+import { FiArrowUpRight } from "react-icons/fi";
 
 const socialLinks = [
   {
@@ -105,13 +106,13 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#0a0a0a] text-white font-sans w-full">
+    <footer className="bg-[#0a0a0a] text-white rounded-3xl mb-3 font-sans w-full">
       {/* Top Section */}
       <div className="px-6 md:px-10 lg:px-14 pt-14 pb-10 border-b border-white/10">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-0 justify-between">
           {/* Newsletter */}
-          <div className="lg:w-64 flex-shrink-0">
-            <h3 className="text-base font-semibold text-white mb-5 leading-snug">
+          <div className=" ">
+            <h3 className=" font-semibold text-white mb-5 text-3xl leading-snug">
               Stay updated with Rise news
             </h3>
 
@@ -126,22 +127,10 @@ export default function Footer() {
               />
               <button
                 type="submit"
-                className="absolute right-1.5 top-1/2 -translate-y-1/2 w-9 h-9 bg-[#5dffc2] hover:bg-[#3debaa] transition-colors duration-200 rounded-full flex items-center justify-center flex-shrink-0 group"
+                className="absolute right-1.5 top-1/2 -translate-y-1/2 w-9 h-9 -rotate-5 bg-[#5dffc2] cursor-pointer hover:bg-white transition-all duration-300 rounded-full flex items-center justify-center flex-shrink-0 group"
                 aria-label="Subscribe"
               >
-                <svg
-                  className="w-4 h-4 text-black -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-150"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M5 12h14M12 5l7 7-7 7"
-                  />
-                </svg>
+                <FiArrowUpRight className="text-black text-xl transition-transform duration-500 ease-in-out group-hover:rotate-90" />
               </button>
             </form>
 
@@ -152,15 +141,19 @@ export default function Footer() {
             )}
 
             {/* Social Icons */}
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 sm:gap-3">
               {socialLinks.map((s) => (
                 <a
                   key={s.name}
                   href={s.href}
                   aria-label={s.name}
-                  className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-white/50 transition-all duration-200"
+                  className="group flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full hover:rounded-xl text-black bg-white transition-all duration-100 ease-in-out"
                 >
-                  {s.icon}
+                  {/* Main Icon */}
+                  <span className="text-sm sm:text-lg">{s.icon}</span>
+
+                  {/* Arrow */}
+                  <FiArrowUpRight className="text-xs sm:text-sm" />
                 </a>
               ))}
             </div>
@@ -169,15 +162,26 @@ export default function Footer() {
           {/* Nav Columns */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 lg:gap-16 lg:ml-auto">
             {/* Col 1 */}
-            <div>
+            <div className="relative pl-4">
+              {/* Left Line */}
+              <span className="absolute left-0 bottom-0 w-px h-full bg-white/20" />
+
               <ul className="space-y-3">
                 {navLinks.col1.map((link) => (
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-white/80 hover:text-white text-sm font-medium tracking-wide transition-colors duration-200"
+                      className="group relative inline-block overflow-hidden text-sm font-medium tracking-wide text-white/80 hover:text-white"
                     >
-                      {link.label}
+                      {/* TOP TEXT */}
+                      <span className="block transition-transform duration-500 group-hover:-translate-y-full flex items-center gap-1">
+                        {link.label}
+                      </span>
+
+                      {/* BOTTOM TEXT */}
+                      <span className="absolute top-full left-0 flex items-center gap-1 text-green-800 transition-transform duration-500 group-hover:-translate-y-full">
+                        {link.label}
+                      </span>
                     </a>
                   </li>
                 ))}
@@ -185,15 +189,26 @@ export default function Footer() {
             </div>
 
             {/* Col 2 */}
-            <div>
+            <div className="relative pl-4">
+              {/* Left Line */}
+              <span className="absolute left-0 bottom-0 w-px h-full bg-white/20" />
+
               <ul className="space-y-3">
                 {navLinks.col2.map((link) => (
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-white/80 hover:text-white text-sm font-medium tracking-wide transition-colors duration-200"
+                      className="group relative inline-block overflow-hidden text-sm font-medium tracking-wide text-white/80 hover:text-white"
                     >
-                      {link.label}
+                      {/* TOP TEXT */}
+                      <span className="block transition-transform duration-500 group-hover:-translate-y-full flex items-center gap-1">
+                        {link.label}
+                      </span>
+
+                      {/* BOTTOM TEXT */}
+                      <span className="absolute top-full left-0 flex items-center gap-1 text-green-800 transition-transform duration-500 group-hover:-translate-y-full">
+                        {link.label}
+                      </span>
                     </a>
                   </li>
                 ))}
@@ -201,15 +216,26 @@ export default function Footer() {
             </div>
 
             {/* Col 3 */}
-            <div>
+            <div className="relative pl-4">
+              {/* Left Line */}
+              <span className="absolute left-0 bottom-0 w-px h-full bg-white/20" />
+
               <ul className="space-y-3">
                 {navLinks.col3.map((link) => (
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-white/80 hover:text-white text-sm font-medium tracking-wide transition-colors duration-200"
+                      className="group relative inline-block overflow-hidden text-sm font-medium tracking-wide text-white/80 hover:text-white"
                     >
-                      {link.label}
+                      {/* TOP TEXT */}
+                      <span className="block transition-transform duration-500 group-hover:-translate-y-full flex items-center gap-1">
+                        {link.label}
+                      </span>
+
+                      {/* BOTTOM TEXT */}
+                      <span className="absolute top-full left-0 flex items-center gap-1 text-green-800 transition-transform duration-500 group-hover:-translate-y-full">
+                        {link.label}
+                      </span>
                     </a>
                   </li>
                 ))}
@@ -234,7 +260,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="px-6 md:px-10 lg:px-14 py-4 border-t border-white/10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-white/40 text-xs">
+      <div className="px-6 md:px-10 lg:px-14 py-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2  text-xs">
         <div className="flex flex-wrap gap-x-4 gap-y-1 items-center">
           <span>© 2025 Rise at Seven Ltd. All rights reserved</span>
           <span className="hidden sm:inline">•</span>
@@ -256,7 +282,7 @@ export default function Footer() {
             Terms &amp; conditions
           </a>
         </div>
-        <span className="text-white/30 hover:text-white/50 transition-colors duration-200 cursor-default">
+        <span className="text-white transition-colors duration-200 cursor-default">
           Website MadeByShape
         </span>
       </div>

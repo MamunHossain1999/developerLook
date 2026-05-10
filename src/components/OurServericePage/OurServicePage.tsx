@@ -94,20 +94,44 @@ export default function ButtonStyleHoverPage() {
   };
 
   return (
-    <div className="bg-[#f0efeb] px-4 sm:px-8 lg:px-12 py-12 sm:py-16 lg:py-20 overflow-hidden">
+    <div className="bg-[#f0efeb] px-4 sm:px-8 lg:px-2 py-12 sm:py-16 lg:py-3 overflow-hidden">
+      <div className="flex justify-center mb-12 lg:mb-1">
+        <a
+          href="#"
+          className="group relative w-full lg:w-fit bg-white rounded-full hover:rounded-2xl px-6 sm:px-8 py-3 sm:py-4 overflow-hidden"
+        >
+          {/* TEXT WRAPPER */}
+          <div className="relative flex flex-col h-5 justify-center items-center overflow-hidden font-bold text-xs sm:text-sm text-center">
+            {/* TOP */}
+            <span className="transition-transform duration-500 group-hover:-translate-y-full flex items-center justify-center gap-1 w-full text-center">
+              Explore Our Work
+              <FiArrowUpRight className="text-base -rotate-5" />
+            </span>
+
+            {/* BOTTOM */}
+            <span className="absolute top-full w-full flex items-center justify-center gap-1 transition-transform duration-500 group-hover:-translate-y-full text-center">
+              Explore Our Work
+              <FiArrowUpRight className="text-base -rotate-45" />
+            </span>
+          </div>
+        </a>
+      </div>
       {/* HEADER */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between border-b pb-4 mb-10 lg:mb-1 gap-6">
-        <div className="flex items-center gap-3 sm:gap-4">
-          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black leading-none">
-            Our
-          </h2>
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
+          {/* MOBILE: Our + image together */}
+          <div className="flex items-center gap-2 sm:contents">
+            <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black leading-none">
+              Our
+            </h2>
 
-          <div className="overflow-hidden rounded-2xl border border-black/10">
-            <img
-              src="https://images.unsplash.com/photo-1520975916090-3105956dac38?w=300&h=300&fit=crop"
-              alt="services"
-              className="w-12 h-12 sm:w-20 sm:h-20 lg:w-16 lg:h-16 object-cover transition-transform duration-500 hover:scale-110"
-            />
+            <div className="overflow-hidden rounded-xl border border-black/10">
+              <img
+                src="https://images.unsplash.com/photo-1520975916090-3105956dac38?w=300&h=300&fit=crop"
+                alt="services"
+                className="w-10 h-10 sm:w-20 sm:h-20 lg:w-16 lg:h-16 object-cover transition-transform duration-500 hover:scale-110"
+              />
+            </div>
           </div>
 
           <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black leading-none">
@@ -117,7 +141,7 @@ export default function ButtonStyleHoverPage() {
 
         <a
           href="#"
-          className="group relative hidden md:block bg-white border  border-black rounded-full hover:rounded-2xl px-6 sm:px-8 py-3 sm:py-4 overflow-hidden w-fit"
+          className="group relative hidden md:block bg-white  rounded-full hover:rounded-2xl px-6 sm:px-8 py-3 sm:py-4 overflow-hidden w-fit"
         >
           <div className="relative flex flex-col h-5 overflow-hidden font-bold text-xs sm:text-sm">
             <span className="transition-transform duration-500 group-hover:-translate-y-full flex items-center gap-1">

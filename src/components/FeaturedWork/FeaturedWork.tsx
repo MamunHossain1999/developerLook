@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { FiArrowUpRight } from "react-icons/fi";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -87,7 +88,7 @@ const FeaturedWork: React.FC = () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
 
       // MOBILE এ animation OFF
-      if (window.innerWidth < 768) return;
+      const isDesktop = window.innerWidth >= 1024;
 
       const total = works.length;
 
@@ -99,7 +100,7 @@ const FeaturedWork: React.FC = () => {
           trigger: sectionRef.current,
           start: "top top",
           end: `+=${scrollDistance}`,
-          pin: true,
+          pin: isDesktop, // only desktop pin
           scrub: false,
           anticipatePin: 1,
           invalidateOnRefresh: true,
@@ -190,7 +191,7 @@ const FeaturedWork: React.FC = () => {
             </div>
 
             {/* MOBILE + TABLET CARDS */}
-            <div className="lg:hidden flex flex-col gap-4 pt-6 pb-6">
+            <div className="lg:hidden flex flex-col gap-4 pt-6 pb-6 w-full">
               {works.map((work) => (
                 <div
                   key={work.id}
@@ -269,7 +270,7 @@ const FeaturedWork: React.FC = () => {
                 showCursor ? "opacity-100" : "opacity-0"
               }`}
             >
-              View
+              <FiArrowUpRight className=" -rotate-5 text-2xl" />
             </div>
 
             {/* IMAGES */}

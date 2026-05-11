@@ -5,10 +5,11 @@ import hero1 from "../../assets/hero1.png";
 import { gsap } from "gsap";
 import LogoMarquee from "./LogoMarquee";
 const heroImages = [
-  "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=1600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1519608487953-e999c86e7455?q=80&w=1600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1600&auto=format&fit=crop",
+  "https://i.ibb.co.com/1t64j9kR/Emirates-airpline-in-flight.webp",
+  "https://i.ibb.co.com/9HYzqJSr/Red-Bull-Instagram-Post-45.webp",
+  "https://i.ibb.co.com/hFJx9nqm/spaseekers.webp",
+  "https://i.ibb.co.com/mVRbJhRK/Screenshot-2025-07-01-at-21-36-35.webp",
+  "https://i.ibb.co.com/hRkPXTgb/unnamed-6.webp",
 ];
 
 const HeroSection = () => {
@@ -137,7 +138,7 @@ const HeroSection = () => {
           on every searchable platform
         </p>
       </div>
-      <div>
+      <div className="hidden md:block">
         <LogoMarquee />
       </div>
       {/* BOTTOM BAR */}

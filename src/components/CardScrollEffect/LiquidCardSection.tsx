@@ -150,7 +150,7 @@ const CleanLiquidSection: React.FC = () => {
               onMouseLeave={onHoverLeave}
             >
               {/* Image */}
-              <div className="relative aspect-[4/5] overflow-hidden rounded-4xl bg-white shadow-sm">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-3xl ">
                 <img
                   src={card.img}
                   alt={card.title}
@@ -158,10 +158,10 @@ const CleanLiquidSection: React.FC = () => {
                 />
 
                 <div
-                  className="liquid-overlay absolute inset-0 bg-blue-300/50 opacity-0 rounded-4xl pointer-events-none flex items-center justify-center p-6 text-white"
+                  className="liquid-overlay absolute inset-0 opacity-10 bg-white/20 backdrop-blur-xl rounded-3xl pointer-events-none flex items-center justify-center p-6 "
                   style={{
-                    backdropFilter: "blur(0px)",
-                    WebkitBackdropFilter: "blur(0px)",
+                    backdropFilter: "bg-blur(10px)",
+                    WebkitBackdropFilter: "bg-blur(10px)",
                   }}
                 />
               </div>

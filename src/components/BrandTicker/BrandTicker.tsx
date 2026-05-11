@@ -130,9 +130,9 @@ const BrandTicker = () => {
   ];
 
   return (
-    <section className="bg-[#f0efeb] py-14 md:py-20 overflow-hidden font-sans">
+    <section className="bg-[#f0efeb] py-14 md:py-2  overflow-hidden font-sans">
       {/* ================= MARQUEE ================= */}
-      <div className="flex flex-col md:flex-row items-start md:items-center mb-16 md:mb-24  sm:px-0 lg:px-0 gap-4">
+      <div className="flex flex-col md:flex-row items-start md:items-center mb-16 md:my-24  sm:px-0 lg:px-0 gap-4">
         <span className="text-[11px] pl-2 md:pl-5 md:text-[12px] font-bold uppercase whitespace-nowrap">
           The agency behind...
         </span>

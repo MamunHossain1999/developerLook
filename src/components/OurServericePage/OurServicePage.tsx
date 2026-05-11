@@ -47,29 +47,25 @@ export default function ButtonStyleHoverPage() {
         >
           {/* TEXT + ICON */}
           <div className="flex items-center gap-3 z-20">
+            {/* ICON (bottom → top) */}
             <span
-              className={`${
-                isHovered
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-0 -translate-x-3"
-              } text-white transition-all duration-300 hidden lg:block`}
+              className={`hidden lg:block transition-all duration-500 ease-out transform
+      ${isHovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
             >
-              <FiArrowUpRight size={36} className="-rotate-5 pl-1" />
+              <FiArrowUpRight size={56} className="-rotate-5 text-white pl-1" />
             </span>
 
-            {/* MOBILE IMAGE (always visible) */}
+            {/* MOBILE IMAGE */}
             <img
               src={service.img}
               alt={service.name}
               className="w-12 h-12 object-cover rounded-xl lg:hidden"
             />
 
+            {/* TEXT (left → right) */}
             <span
-              className={`text-2xl sm:text-4xl lg:text-5xl font-black transition-all duration-300 ${
-                isHovered
-                  ? "text-white translate-x-2"
-                  : "text-black/80 translate-x-0"
-              }`}
+              className={`text-2xl sm:text-4xl lg:text-5xl font-black transition-all duration-500 ease-out transform
+      ${isHovered ? "text-white translate-x-2" : "text-black/80 translate-x-0"}`}
               style={{ fontFamily: "'Arial Black', sans-serif" }}
             >
               {service.name}
@@ -111,7 +107,7 @@ export default function ButtonStyleHoverPage() {
             {/* BOTTOM */}
             <span className="absolute top-full w-full flex items-center justify-center gap-1 transition-transform duration-500 group-hover:-translate-y-full text-center">
               Explore Our Work
-              <FiArrowUpRight className="text-base -rotate-45" />
+              <FiArrowUpRight className="text-base -rotate-5" />
             </span>
           </div>
         </a>
@@ -125,7 +121,7 @@ export default function ButtonStyleHoverPage() {
               Our
             </h2>
 
-            <div className="overflow-hidden rounded-xl border border-black/10">
+            <div className="overflow-hidden rounded-2xl border border-black/10">
               <img
                 src="https://images.unsplash.com/photo-1520975916090-3105956dac38?w=300&h=300&fit=crop"
                 alt="services"

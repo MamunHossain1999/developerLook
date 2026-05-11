@@ -83,8 +83,8 @@ export default function CardStack(): JSX.Element {
       ref={containerRef}
       className="py-16 md:py-24 w-full bg-[#f0f0f0] overflow-x-hidden"
     >
-      <div className="text-center mb-12 md:mb-16 px-4">
-        <h4 className="text-3xl md:text-2xl font-black tracking-tight ">
+      <div className="text-center  px-4">
+        <h4 className="text-3xl  md:text-2xl font-black tracking-tight ">
           Legacy In The Making
         </h4>
       </div>
@@ -94,7 +94,7 @@ export default function CardStack(): JSX.Element {
       */}
       <div
         className="
-          flex flex-row overflow-x-auto snap-x snap-mandatory scrollbar-hide px-6 gap-5
+          flex flex-row overflow-x-auto snap-x mt-12 md:mt-26 snap-mandatory scrollbar-hide px-6 gap-5
           md:grid md:relative md:w-[450px] md:h-[550px] md:mx-auto md:px-0 md:overflow-visible
         "
       >

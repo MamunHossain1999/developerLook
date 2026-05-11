@@ -6,56 +6,91 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function RiseAtSeven() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLHeadingElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+
   const text = "Ready to Rise at Seven?";
 
   useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+
     const ctx = gsap.context(() => {
-      if (!textRef.current || !containerRef.current) return;
+      if (!containerRef.current || !trackRef.current || !textRef.current)
+        return;
 
-      // calculation for total scroll distance
-      const totalWidth = textRef.current.scrollWidth;
+      const chars = textRef.current.querySelectorAll(".char");
 
-      gsap.to(textRef.current, {
-        // Text screen theke pura ber hoye jabe
-        x: () => -(totalWidth), 
-        ease: "none",
+      gsap.set(chars, {
+        y: -250,
+        opacity: 0,
+        rotate: 15,
+      });
+
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=2500", // Smoothness er jonno distance
-          scrub: 1.5,
+          end: isMobile ? "+=1500" : "+=3000",
+          scrub: 1,
           pin: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
         },
       });
+
+      // letter নেমে আসবে
+      tl.to(
+        chars,
+        {
+          x: 0,
+          y: 0,
+          opacity: 1,
+          rotate: 0,
+          ease: "back.out(2.9)",
+          stagger: {
+            each: isMobile ? 0.05 : 0.08,
+            from: "start",
+          },
+          duration: isMobile ? 0.5 : 0.8,
+        },
+        0
+      );
+
+      // right থেকে left এ scroll
+      tl.to(
+        trackRef.current,
+        {
+          x: () => -(trackRef.current!.scrollWidth - window.innerWidth),
+          ease: "none",
+          duration: 1.5,
+        },
+        isMobile ? 0.5 : 0.8
+      );
     }, containerRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <div ref={containerRef} className="bg-[#f0efeb] overflow-hidden">
-      {/* h-screen: Pura screen height nibe pinning er jonno
-          items-center: Text ke vertical center korbe
-          -mt-[10vh]: Center theke ektu upore uthanor jonno negative margin
-      */}
-      <section className="h-screen flex items-center justify-start overflow-hidden -mt-[5vh]">
-        <h1
-          ref={textRef}
-          className="font-black whitespace-nowrap leading-[0.85] will-change-transform"
-          style={{
-            fontSize: "18vw",
-            letterSpacing: "-0.04em",
-            color: "#111111",
-            display: "inline-block",
-            // Shuru-te text-ti screen-er center-e thakbe (left side faka rakhbe)
-            paddingLeft: "100vw", 
-          }}
-        >
-          {text}
-        </h1>
+    <div ref={containerRef} className="overflow-hidden">
+      <section className="h-screen flex items-center relative">
+        <div ref={trackRef} className="flex will-change-transform">
+          <div
+            ref={textRef}
+            className="flex whitespace-nowrap"
+            style={{
+              fontSize: "clamp(2rem, 11vw, 11vw)",
+              letterSpacing: "-0.04em",
+              color: "#111",
+              paddingLeft: "100vw",
+              paddingRight: "100vw",
+            }}
+          >
+            {text.split("").map((char, i) => (
+              <span key={i} className="inline-block char">
+                {char === " " ? "\u00A0" : char}
+              </span>
+            ))}
+          </div>
+        </div>
       </section>
     </div>
   );

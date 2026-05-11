@@ -14,6 +14,8 @@ const works = [
     date: "[2023-2025]",
     img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=1400&q=80",
     color: "#ff4d4d",
+    description:
+      "A premium mobility brand focused on global car rental and digital transformation of user experience.",
   },
   {
     id: 2,
@@ -21,6 +23,8 @@ const works = [
     date: "[2021-2025]",
     img: "https://images.unsplash.com/photo-1664575602554-2087b04935a5?w=1400&q=80",
     color: "#4d79ff",
+    description:
+      "A fast-growing fintech platform delivering modern payment solutions for businesses and customers.",
   },
   {
     id: 3,
@@ -28,6 +32,8 @@ const works = [
     date: "[2023-2024]",
     img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1400&q=80",
     color: "#4dff88",
+    description:
+      "A B2B trade platform connecting suppliers and retailers with seamless digital commerce solutions.",
   },
   {
     id: 4,
@@ -35,6 +41,8 @@ const works = [
     date: "[2025]",
     img: "https://images.unsplash.com/photo-1556906781-9a412961c28c?w=1400&q=80",
     color: "#ffd24d",
+    description:
+      "A leading sportswear retailer delivering global fashion and athletic lifestyle experiences.",
   },
   {
     id: 5,
@@ -42,6 +50,8 @@ const works = [
     date: "[2019-2025]",
     img: "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=1400&q=80",
     color: "#b84dff",
+    description:
+      "One of the UK’s largest holiday park operators focused on family travel and resort experiences.",
   },
   {
     id: 6,
@@ -49,6 +59,8 @@ const works = [
     date: "[2025]",
     img: "https://images.unsplash.com/photo-1534073828943-f801091bb18c?w=1400&q=80",
     color: "#ff8c4d",
+    description:
+      "A creative lighting brand known for bold, playful, and design-driven home décor products.",
   },
   {
     id: 7,
@@ -56,6 +68,8 @@ const works = [
     date: "[2019-2025]",
     img: "https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?w=1400&q=80",
     color: "#4dfff3",
+    description:
+      "Holiday resort experience provider focusing on memorable UK vacation destinations.",
   },
   {
     id: 8,
@@ -63,6 +77,8 @@ const works = [
     date: "[2022-23]",
     img: "https://images.unsplash.com/photo-1586015555751-63bb77f4322a?w=1400&q=80",
     color: "#ff4df2",
+    description:
+      "A healthcare and pharmacy brand delivering trusted medical services and wellness solutions.",
   },
   {
     id: 9,
@@ -70,6 +86,8 @@ const works = [
     date: "[2021-2023]",
     img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1400&q=80",
     color: "#4dffb8",
+    description:
+      "A global fashion brand targeting young audiences with fast, trend-driven clothing collections.",
   },
 ];
 
@@ -191,36 +209,39 @@ const FeaturedWork: React.FC = () => {
             </div>
 
             {/* MOBILE + TABLET CARDS */}
-            <div className="lg:hidden flex flex-col gap-4 pt-6 pb-6 w-full">
+            <div className="flex flex-col gap-4 w-full px-4 sm:px-6 md:px-10 lg:hidden pt-6 pb-6">
               {works.map((work) => (
                 <div
                   key={work.id}
-                  className="relative w-full h-[220px] sm:h-[260px] rounded-2xl overflow-hidden"
+                  className="relative w-full rounded-2xl overflow-hidden"
                 >
+                  {/* IMAGE */}
                   <img
                     src={work.img}
                     alt={work.title}
                     loading="lazy"
-                    className="w-full h-full object-cover"
+                    className="w-full h-[250px] sm:h-[320px] md:h-[420px] object-cover transition-transform duration-500 hover:scale-105"
                   />
 
+                  {/* DARK GRADIENT OVERLAY */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
+                  {/* TOP BADGE */}
                   <div className="absolute top-3 left-3 right-3 flex items-center justify-between bg-white/10 backdrop-blur-md rounded-full px-4 py-2 text-white text-xs sm:text-sm">
-                    <span>{work.title}</span>
-                    <span>↗</span>
+                    <span className="font-medium">{work.title}</span>
+                    <span className="text-lg">↗</span>
                   </div>
 
-                  <div className="absolute bottom-3 left-3 text-white">
-                    <p className="text-xs opacity-70">{work.date}</p>
-                    <h2 className="text-lg sm:text-2xl font-semibold">
+                  {/* BOTTOM CONTENT */}
+                  <div className="absolute bottom-3 left-3 right-3 text-white">
+                    <p className="text-xs sm:text-sm opacity-70">{work.date}</p>
+                    <h2 className="text-lg sm:text-2xl font-semibold leading-tight">
                       {work.title}
                     </h2>
                   </div>
                 </div>
               ))}
             </div>
-
             {/* DESKTOP TEXT */}
             <div
               className="hidden lg:flex text-wrap flex-col z-20 pt-[5vh] w-full"
@@ -259,7 +280,7 @@ const FeaturedWork: React.FC = () => {
 
           {/* RIGHT SIDE (DESKTOP ONLY) */}
           <div
-            className="hidden lg:flex w-full lg:w-1/2 h-[70vh] lg:h-full items-center justify-center relative"
+            className="hidden lg:block w-full lg:w-1/2 h-[70vh] lg:h-full items-center justify-center relative"
             onMouseEnter={() => setShowCursor(true)}
             onMouseLeave={() => setShowCursor(false)}
           >
@@ -274,7 +295,7 @@ const FeaturedWork: React.FC = () => {
             </div>
 
             {/* IMAGES */}
-            <div className="w-full h-[95vh] overflow-hidden rounded-3xl cursor-none relative bg-[#0a0a0a]">
+            <div className="w-full h-[85vh] overflow-hidden rounded-3xl cursor-none relative bg-[#0a0a0a]">
               <div className="images-wrap h-full w-full">
                 {works.map((work, i) => (
                   <div key={work.id} className="h-full w-full p-4">
@@ -283,24 +304,46 @@ const FeaturedWork: React.FC = () => {
                       onMouseEnter={() => setHoveredIndex(i)}
                       onMouseLeave={() => setHoveredIndex(null)}
                     >
+                      {/* IMAGE */}
                       <img
                         src={work.img}
                         alt={work.title}
-                        className="absolute inset-0 w-full h-full object-cover"
+                        className={`absolute inset-0 w-full h-full object-cover transition-all duration-300
+    ${hoveredIndex === i ? "opacity-0" : "opacity-100"}`}
                       />
 
+                      {/* COLOR OVERLAY */}
                       <div
-                        className="liquid-overlay absolute rounded-2xl inset-0 pointer-events-none"
+                        className="absolute inset-0 rounded-2xl pointer-events-none"
                         style={{
                           backgroundColor: work.color,
                           clipPath:
                             hoveredIndex === i
                               ? "circle(150% at 50% 100%)"
                               : "circle(0% at 50% 100%)",
-                          opacity: hoveredIndex === i ? 1 : 0,
+                          opacity: hoveredIndex === i ? 0.85 : 0,
                           transition: "all 0.7s ease-in-out",
                         }}
                       />
+
+                      {/* DESCRIPTION OVERLAY */}
+                      <div
+                        className={`absolute inset-0 flex flex-col justify-start p-6 text-white
+    transition-all duration-700 delay-400
+    ${
+      hoveredIndex === i
+        ? "opacity-100 translate-y-0"
+        : "opacity-0 translate-y-6"
+    }`}
+                      >
+                        <p className="text-4xl mt-2 text-white">
+                          {work.description}
+                        </p>
+
+                        <span className="text-xs mt-3 text-white/60">
+                          {work.date}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 ))}

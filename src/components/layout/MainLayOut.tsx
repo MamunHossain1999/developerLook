@@ -1,52 +1,65 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import React, { useEffect, useRef, useState } from "react";
 import { Outlet } from "react-router-dom";
-import gsap from "gsap";
 import ScrollToTop from "../ScrollTop/ScrollTop";
 import Navbar from "../navber/Navbar";
 import Footer from "../footer/Footer";
 
 const MainLayOut: React.FC = () => {
   const overlayRef = useRef<HTMLDivElement>(null);
-  const [isDone, setIsDone] = useState(false);
+  const [done, setDone] = useState(false);
+  const isMobile = window.innerWidth < 768;
 
-useEffect(() => {
-  if (!overlayRef.current) return;
+  useEffect(() => {
+    // mobile animation skip
+    if (isMobile) {
+      setDone(true);
+      return;
+    }
 
-  const tl = gsap.timeline({
-    onComplete: () => {
-      setIsDone(true);
-    },
-  });
+    const el = overlayRef.current;
+    if (!el) return;
 
-  tl.set(overlayRef.current, {
-    // শুরুতে পুরো স্ক্রিন ৪টি কোণা দিয়ে ঢেকে থাকবে
-    clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-    visibility: "visible",
-  })
-  .to(overlayRef.current, {
-    // ৪টি কোণা সংকুচিত হয়ে উপরে মাঝখানে চলে যাবে (Revealing from corners)
-    clipPath: "polygon(50% 0%, 50% 0%, 50% 0%, 50% 0%)", 
-    duration: 1.8,
-    ease: "expo.inOut",
-    delay: 0.5,
-  });
-}, []);
+    const handleAnimationEnd = () => setDone(true);
+    el.addEventListener("animationend", handleAnimationEnd);
+
+    return () => el.removeEventListener("animationend", handleAnimationEnd);
+  }, []);
 
   return (
     <div className="mx-2 relative overflow-hidden">
-      {/* Loader Overlay - এটি মেইন পেজকে ঢেকে রাখবে */}
-      {!isDone && (
+      {!done && (
         <div
           ref={overlayRef}
-          className="fixed inset-0 z-[9999] pointer-events-none"
-          style={{ backgroundColor: "#b45309" }} // আপনার থিম কালার
+          className="fixed inset-0 z-[99999] bg-[#B2F5E8]"
+          style={{
+            clipPath:
+              "polygon(0% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%)",
+            animation: "wipeUp 1.6s ease-in-out 0.3s forwards",
+          }}
         />
       )}
+
+      <style>{`
+        @keyframes wipeUp {
+          0% {
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 130%, 0% 100%);
+            transform: translateY(0%);
+          }
+          40% {
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%);
+            transform: translateY(0%);
+          }
+          100% {
+            clip-path: polygon(0% 10%, 100% 20%, 100% 100%, 50% 70%, 0% 100%);
+            transform: translateY(-110%);
+          }
+        }
+      `}</style>
 
       <ScrollToTop />
       <Navbar />
 
-      {/* মেইন পেজ কন্টেন্ট - যা নিচ থেকে বের হবে */}
       <main>
         <div className="min-h-[calc(100vh-380px)] bg-white rounded-2xl overflow-hidden">
           <Outlet />

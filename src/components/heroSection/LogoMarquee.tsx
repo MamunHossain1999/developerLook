@@ -39,11 +39,11 @@ const logos = [
 
 const LogoMarquee = () => {
   return (
-    <div className="w-full py-10 relative overflow-hidden">
+    <div className="w-full py-10 relative ">
       <div className="flex">
         {/* প্রথম সেট লোগো */}
         {logos.map((logo, index) => (
-          <div key={index} className="flex items-center">
+          <div key={index} className="flex  items-center">
             <img
               src={logo.url}
               alt={logo.name}
